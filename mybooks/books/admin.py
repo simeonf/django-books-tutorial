@@ -1,4 +1,9 @@
 from django.contrib import admin
+
 from .models import Book
 
-admin.site.register(Book)
+class BookAdmin(admin.ModelAdmin):
+    date_hierarchy = 'read_on'
+    list_display = ('title', 'isbn', 'read_on')
+
+admin.site.register(Book, BookAdmin)
